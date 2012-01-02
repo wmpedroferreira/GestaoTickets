@@ -1,15 +1,23 @@
 SampleApp::Application.routes.draw do
 
+
   resources :users do
     member do
       get :following, :followers
     end
   end
-  
+  resources :projects,      :only => [:new, :index, :edit, :create, :destroy]
+
   resources :sessions,      :only => [:new, :create, :destroy]
   
-  root :to => "pages#home"
+  resources :clients
 
+  
+  root :to => "pages#home"
+  
+  match '/newclients',:to => 'clients#new'
+  match '/alterclient', :to => 'clients#edit'
+  match '/newprojects',:to => 'projects#new'
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'

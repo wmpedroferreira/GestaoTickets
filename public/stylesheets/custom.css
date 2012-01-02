@@ -187,6 +187,14 @@ ul.users {
   margin-top: 1em;
 }
 
+ul.projects {
+  margin-top: 1em;
+}
+
+ul.projects li {
+  list-style: none;
+}
+
 ul.users li {
   list-style: none;
 }

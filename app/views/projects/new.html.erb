@@ -1,0 +1,8 @@
+<h1>Projects</h1>
+
+<%= form_for(@project) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Submit Project" %>
+  </div>  
+<% end %>
