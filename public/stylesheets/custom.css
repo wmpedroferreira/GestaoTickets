@@ -247,3 +247,8 @@ form.new_micropost textarea {
   height: 4em;
   margin-bottom: 0;
 }
+
+img.Logo {
+  height: 32px;
+  width: 32px;
+}

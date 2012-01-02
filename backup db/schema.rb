@@ -36,14 +36,11 @@ ActiveRecord::Schema.define(:version => 20100831012055) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "img_file_path"
-    t.string   "client_admin_gestor_id"
-    t.string   "tipo_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin",                  :default => false
+    t.boolean  "admin",              :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

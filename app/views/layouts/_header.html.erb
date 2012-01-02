@@ -1,19 +1,24 @@
 <header>
   <%= link_to logo, root_path %>
+  <br />
+
   <nav class="round">
     <ul>
+      <% if signed_in? %>
+        <img src = '<%= @current_user.imgPath %>' class="Logo">
+      <li><%= @current_user.name %></li>
+      <% end %>
       <li><%= link_to "Home", root_path %></li>
       <% if signed_in? %>
-        <li><%= link_to "Profile", current_user %></li>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <% end %>
-      <li><%= link_to "Help", help_path %></li>
-      <% if signed_in? %>
-        <li><%= link_to "Sign out", signout_path %></li>
+      <li><%= link_to "Projects", root_path %></li>
+      <li><%= link_to "Users", root_path %></li>
+      <li><%= link_to "Tickets", root_path %></li>
+      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+      <li><%= link_to "Sign out", signout_path %></li>
       <% else %>
-        <li><%= link_to "Sign in", signin_path %></li>
+      <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
+ 
     </ul>
   </nav>
 </header>
