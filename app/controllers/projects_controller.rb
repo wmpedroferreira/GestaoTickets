@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :new, :show]
+  before_filter :authenticate, :only => [:index, :edit, :new, :create, :show]
   def index
     @projects = Project.paginate(:page => params[:page])
     @title = "All Projects"
@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
   def show
   	@project = Project.find(params[:id])
   	@title = @project.title
+    @current_project = @project
   end
 
   def new
@@ -20,4 +21,20 @@ class ProjectsController < ApplicationController
     @project.save
     redirect_to projects_path, :flash => { :success => "SUCESSO!" }  
   end
+
+  def edit
+    @project = Project.find(params[:id])
+    @title = "Edit Project"
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(params[:project])
+      redirect_to @project, :flash => { :success => "Project updated." }
+    else
+      @title = "Edit Project"
+      render 'edit'
+    end
+  end
+
 end

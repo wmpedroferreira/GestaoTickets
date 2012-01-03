@@ -1,0 +1,13 @@
+<table class="project" summary="Project information">
+  <tr>
+    <td class="sidebar round">
+      <strong>Title</strong> <%= @project.title %><br />
+      <strong>Client</strong>  <%= @project.client_id %><br />
+      <strong>Admin</strong>  <%= @project.admin_id %><br />
+      <strong>Description</strong>  <%= @project.description %><br />
+    </td>
+  </tr>
+</table>
+<% if @current_user.isAdmin? %>
+  <%= link_to 'Edit Project', edit_project_path(@project) %>
+<% end %>
