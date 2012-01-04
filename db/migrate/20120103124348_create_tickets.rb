@@ -9,6 +9,7 @@ class CreateTickets < ActiveRecord::Migration
       t.string :request_type_id
       t.timestamps
     end
+    add_index :tickets, [:user_id, :created_at]
   end
 
   def self.down

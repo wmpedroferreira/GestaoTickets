@@ -2,9 +2,16 @@
 <html>
   <head>
     <title><%= title %></title>
-    <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :all %>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <%= csrf_meta_tag %>
+    <script language="JavaScript">
+function setVisibility(id, visibility) {
+document.getElementById(id).style.display = visibility;
+}
+</script>
+
   </head>
   <body>
     <div class="container">

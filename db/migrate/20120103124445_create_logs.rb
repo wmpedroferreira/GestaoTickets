@@ -7,7 +7,10 @@ class CreateLogs < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :logs, [:ticket_id, :created_at]  
   end
+
+  
 
   def self.down
     drop_table :logs

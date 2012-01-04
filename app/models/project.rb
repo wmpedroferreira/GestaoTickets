@@ -1,7 +1,8 @@
 class Project < ActiveRecord::Base	
 	
 	attr_accessible(:title, :client_id, :admin_id, :description)
- 
+	has_many	:tickets,	:dependent => :destroy
+	
 end
 
 

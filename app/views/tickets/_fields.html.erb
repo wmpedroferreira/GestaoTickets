@@ -1,0 +1,30 @@
+<%= form_for(@ticket) do |t| %>
+
+    <div class="field">
+      <%= t.label :user_id %><br />
+      <%= t.text_field :user_id %>
+    </div>
+    <div class="field">
+      <%= t.label :project_id %><br />
+      <%= t.text_field :project_id %>
+    </div>
+   <div class="field">
+      <%= t.label :state_id %><br />
+      <%= t.text_field :state_id %>
+    </div>
+    <div class="field">
+      <%= t.label :urgency_id %><br />
+      <%= t.text_field :urgency_id %>
+    </div>
+    <div class="field">
+      <%= t.label :intervention_id %><br />
+      <%= t.text_field :intervention_id %>
+    </div>
+    <div class="field">
+      <%= t.label :request_type_id %><br />
+      <%= t.text_field :request_type_id %>
+    </div>
+    <div class="actions">
+    <%= t.submit "Submit Ticket" %>
+  </div>  
+<% end %>

@@ -7,8 +7,10 @@ class ProjectsController < ApplicationController
   
   def show
   	@project = Project.find(params[:id])
-  	@title = @project.title
-    @current_project = @project
+    @title = @project.title
+    $projecto = @project
+    @store = Ticket.find(:all, :conditions => { :project_id  => @project.id })
+    @tickets = @store.paginate(:page => params[:page])
   end
 
   def new
@@ -37,4 +39,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-end
+  def newticket
+    render 'newticket'
+  end
+end            

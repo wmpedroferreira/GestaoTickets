@@ -1,2 +1,19 @@
-<h1>Tickets#show</h1>
-<p>Find me in app/views/tickets/show.html.erb</p>
+  <div class="tickets">
+  <br />
+      TODO Create table and layout
+   <br />
+      <label for="Submitted_date_lbl">Submitted date:</label>
+      <label for="Submitted_date_field"><%= @ticket.created_at %></label>
+      <label for="user_id_lbl">User:</label>
+      <label for="user_id_field"><%= @ticket.user_id %></label><br />
+      <label for="project_id_lbl">Project:</label>
+      <label for="project_id_field"><%= @ticket.project_id %></label><br />
+      <label for="state_id_lbl">State:</label>
+      <label for="state_id_field"><%= @ticket.state_id %></label><br />
+      <label for="urgency_id_lbl">Urgency:</label>
+      <label for="urgency_id_field"><%= @ticket.urgency_id %></label><br />
+      <label for="intervention_id_lbl">Intervention:</label>
+      <label for="intervention_id_field"><%= @ticket.intervention_id %></label><br />
+      <label for="request_type_id_lbl">Request type:</label>
+      <label for="request_type_id_field"><%= @ticket.request_type_id %></label><br />
+  </div>

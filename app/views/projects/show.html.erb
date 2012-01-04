@@ -1,3 +1,6 @@
+<% content_for :scripts do %>
+<script type="text/javascript" ..... ></script>
+<% end %>
 <table class="project" summary="Project information">
   <tr>
     <td class="sidebar round">
@@ -10,4 +13,12 @@
 </table>
 <% if @current_user.isAdmin? %>
   <%= link_to 'Edit Project', edit_project_path(@project) %>
+<% end %>
+<% if @current_user.isGestor? %>
+    <%= link_to( "New Ticket", new_ticket_path(@project)) %>
+    <table class="tickets" summary="Project Tickets">
+    <%= will_paginate @tickets %>
+    <%= render @tickets %>
+    <%= will_paginate @tickets %>
+    </table>
 <% end %>

@@ -1,2 +1,5 @@
-<h1>Tickets#new</h1>
-<p>Find me in app/views/tickets/new.html.erb</p>
+<h1>Tickets</h1>
+
+<%= form_for(@ticket) do |t| %>
+  <%= render 'fields', :t => t %>
+<% end %>

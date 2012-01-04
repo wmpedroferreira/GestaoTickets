@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible(:name, :email, :password, :password_confirmation, :img_file_path, :client_admin_gestor_id, :tipo_user_id)
   
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :name,  :presence => true,
@@ -37,6 +38,18 @@ class User < ActiveRecord::Base
   end
   
   def isAdmin?
+    if tipo_user_id == "Admin"
+      tipo_user_id
+    end
+  end
+
+  def isGestor?
+    if tipo_user_id == "Admin"
+      tipo_user_id
+    end
+  end
+
+  def isClient?
     if tipo_user_id == "Admin"
       tipo_user_id
     end

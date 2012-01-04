@@ -1,0 +1,39 @@
+  <div class="tickets">
+  <br />
+      TODO Create table and layout
+   <br />
+      <label for="Submitted_date_lbl">Submitted date:</label>
+      <label for="Submitted_date_field"><%= ticket.created_at %></label>
+      <label for="user_id_lbl">User:</label>
+      <label for="user_id_field"><%= ticket.user_id %></label><br />
+      <label for="project_id_lbl">Project:</label>
+      <label for="project_id_field"><%= ticket.project_id %></label><br />
+      <label for="state_id_lbl">State:</label>
+      <label for="state_id_field"><%= ticket.state_id %></label><br />
+      <label for="urgency_id_lbl">Urgency:</label>
+      <label for="urgency_id_field"><%= ticket.urgency_id %></label><br />
+      <label for="intervention_id_lbl">Intervention:</label>
+      <label for="intervention_id_field"><%= ticket.intervention_id %></label><br />
+      <label for="request_type_id_lbl">Request type:</label>
+      <label for="request_type_id_field"><%= ticket.request_type_id %></label><br />
+
+      <input type=button name=type value='Show Layer' onclick="setVisibility('logs2', 'inline');";>
+      <input type=button name=type value='Hide Layer' onclick="setVisibility('logs2', 'none');"; style="display: none"> 
+        <% unless ticket.logs.empty? %>
+        <table class="logs" id="logs2" summary="ticket logs" style="display: none">
+         <% @logas = ticket.logs %>
+         <% @logas.each do |log| %>         
+         <div id= "log<%= log.id %>" >
+         <h1>
+           <tr>
+             <td><label for="subject">Subject: </label><%= log.subject %></td>
+             <td><label for="messagem">Messagem: </label><%= log.messagem %></td>
+           </tr>
+          </h1>
+         </div>
+         <% end %>
+        </table>
+        <% end %>
+  </div>
+
+  

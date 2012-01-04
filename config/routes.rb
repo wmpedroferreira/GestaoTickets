@@ -1,14 +1,6 @@
 SampleApp::Application.routes.draw do
 
 
-  get "tickets/new"
-
-  get "tickets/edit"
-
-  get "tickets/show"
-
-  get "tickets/index"
-
   resources :users do
     member do
       get :following, :followers
@@ -19,6 +11,9 @@ SampleApp::Application.routes.draw do
   resources :sessions
   
   resources :clients
+
+  resources :tickets
+
 
   
   root :to => "pages#home"
