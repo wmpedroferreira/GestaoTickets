@@ -16,14 +16,18 @@
       <label for="intervention_id_field"><%= ticket.intervention_id %></label><br />
       <label for="request_type_id_lbl">Request type:</label>
       <label for="request_type_id_field"><%= ticket.request_type_id %></label><br />
-
-      <input type=button name=type value='Show Layer' onclick="setVisibility('logs2', 'inline');";>
-      <input type=button name=type value='Hide Layer' onclick="setVisibility('logs2', 'none');"; style="display: none"> 
+      
         <% unless ticket.logs.empty? %>
         <table class="logs" id="logs2" summary="ticket logs" style="display: none">
          <% @logas = ticket.logs %>
-         <% @logas.each do |log| %>         
-         <div id= "log<%= log.id %>" >
+         <% @logas.each do |log| %>        
+         <form>
+         <input type=button name=type value='Hide Layer' onclick="show2('logs#{ log.id }');";>
+      <input type=button name=type value='Hide Layer' onclick="hide2('logs2');";>
+      <input type=button name=type value='Show Layer' onclick="show2('logs2');";>
+      </form> 
+         <div id= "logs<%= log.id %>" >
+
          <h1>
            <tr>
              <td><label for="subject">Subject: </label><%= log.subject %></td>
@@ -36,4 +40,39 @@
         <% end %>
   </div>
 
-  
+  <script>
+var browserType;
+
+if (document.layers) {browserType = "nn4"}
+if (document.all) {browserType = "ie"}
+if (window.navigator.userAgent.toLowerCase().match("gecko")) {
+ browserType= "gecko"
+}
+
+function hide2(id) {
+  if (browserType == "gecko" )
+     document.poppedLayer =
+         eval('document.getElementById(id)');
+  else if (browserType == "ie")
+     document.poppedLayer =
+        eval('document.getElementById(id)');
+  else
+     document.poppedLayer =
+        eval('document.layers[id]');
+  document.poppedLayer.style.display = "none";
+}
+
+function show2(id) {
+  if (browserType == "gecko" )
+     document.poppedLayer =
+         eval('document.getElementById(id)');
+  else if (browserType == "ie")
+     document.poppedLayer =
+        eval('document.getElementById(id)');
+  else
+     document.poppedLayer =
+         eval('document.layers[id]');
+  document.poppedLayer.style.display = "inline";
+}
+
+</script>
