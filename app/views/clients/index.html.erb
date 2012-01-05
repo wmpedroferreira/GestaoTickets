@@ -1,5 +1,9 @@
 <h1>All Clients</h1>
 
+ <% if @current_user.isAdmin? %>
+      <li><%= link_to "New Client", new_client_path %></li>
+<% end %>
+
 <%= will_paginate %>
 
 <ul class="clients">

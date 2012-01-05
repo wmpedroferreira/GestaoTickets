@@ -3,9 +3,6 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= render 'fields', :f => f %>
-  <% if @current_user.isAdmin? %>
-  <%= render 'fields1', :f => f%>
-  <%   end %>
   
   <div class="actions">
     <%= f.submit "Update" %>

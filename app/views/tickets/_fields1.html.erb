@@ -1,0 +1,10 @@
+<%= form_for(@ticket) do |t| %>
+    <div class="field">
+      <%= t.label :user_id %><br />
+      <%= t.text_field :user_id %>
+    </div>
+    <div class="field">
+      <%= t.label :project_id %><br />
+      <%= t.text_field :project_id %>
+    </div>
+<% end %>

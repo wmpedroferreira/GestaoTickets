@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
-  
+  before_filter :authenticate
+  before_filter :admin_user,   :only => :destroy
+
   def new
     @ticket = Ticket.new
   end
@@ -7,6 +9,7 @@ class TicketsController < ApplicationController
   def create
     @ticket =  Ticket.new(params[:ticket])
     @ticket.project_id = $projecto.id
+    @ticket.user_id = current_user.id
     if @ticket.save
       redirect_to projects_path, :flash => { :success => "Ticket created!" }
     else
@@ -26,5 +29,9 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     @ticket.destroy
     redirect_to projects_path, :flash => { :success => "Ticket deleted!" }
+  end
+
+  def active_tickets
+    $active_tickets = Ticket.find(:all, :condition => { :state_id == "Open"})
   end
 end

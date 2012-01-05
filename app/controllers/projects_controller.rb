@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :new, :create, :show]
+  before_filter :authenticate
+  before_filter :admin_user,   :only => [:new, :create, :edit]
+
   def index
     @projects = Project.paginate(:page => params[:page])
     @title = "All Projects"
@@ -15,11 +17,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project  = Project.new
+    @clients = Client.all
     @title = "New Project"
   end
 
   def create
     @project = Project.new(params[:project])
+    @project.admin_id = current_user.id
     @project.save
     redirect_to projects_path, :flash => { :success => "SUCESSO!" }  
   end
@@ -41,5 +45,11 @@ class ProjectsController < ApplicationController
 
   def newticket
     render 'newticket'
+  end
+
+  private
+
+  def admin_user
+      redirect_to(root_path) unless current_user.isAdmin?
   end
 end            

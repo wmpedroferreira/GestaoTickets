@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor   :password
-  attr_accessible(:name, :email, :password, :password_confirmation, :img_file_path, :client_admin_gestor_id, :tipo_user_id)
+  attr_accessible(:name, :email, :password, :password_confirmation, 
+                    :img_file_path, :client_admin_gestor_id, :tipo_user_id)
   
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -12,7 +13,10 @@ class User < ActiveRecord::Base
                     :uniqueness => { :case_sensitive => false }
   validates :password, :presence => true, 
                        :confirmation => true,
-                       :length => { :within => 6..40 }
+                       :length => { :within => 6..40 },
+                       :on=> :create
+
+  validates :password, :length => { :within => 6..40 }
 
   before_save :encrypt_password
   
@@ -37,21 +41,34 @@ class User < ActiveRecord::Base
     img_file_path
   end
   
+  def update_with_password(params={})
+    params.delete(:current_password)
+    self.update_without_password(params)
+  end
+
   def isAdmin?
     if tipo_user_id == "Admin"
-      tipo_user_id
+      true
+    else
+      false
     end
   end
 
   def isGestor?
-    if tipo_user_id == "Admin"
-      tipo_user_id
+    if tipo_user_id == "Gestor"
+        true
+    elsif tipo_user_id == "Admin"
+      true
+    else
+      false
     end
   end
 
   def isClient?
-    if tipo_user_id == "Admin"
-      tipo_user_id
+    if tipo_user_id == "Client"
+      true
+    else
+      false
     end
   end
 

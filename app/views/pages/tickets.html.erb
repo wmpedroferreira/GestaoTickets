@@ -1,0 +1,14 @@
+<% if signed_in? %>
+
+  <table class="front" summary="Active Tickets">
+    <tr>
+      <td class="tickets">
+        <%= render 'tickets/active_tickets', :action => 'active_tickets' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info'%>
+      </td>
+    </tr>
+  </table>
+
+<% end %> 

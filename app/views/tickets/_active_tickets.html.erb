@@ -1,0 +1,8 @@
+<h1>Tickets</h1>
+<%  @active_tickets = Ticket.all %>
+<%= @active_tickets.each do |t| %>
+<% if t.state_id == "Open" %>
+	<%= render 'tickets/fields1', :t => t %>
+	<%= render 'tickets/fields', :t => t %>
+<% end %>
+<% end %>

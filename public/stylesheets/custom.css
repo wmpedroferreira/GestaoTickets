@@ -260,3 +260,9 @@ img.Logo {
   height: 32px;
   width: 32px;
 }
+
+div.tabs button{
+  display: inline;
+  float:left;
+  cursor:pointer
+}

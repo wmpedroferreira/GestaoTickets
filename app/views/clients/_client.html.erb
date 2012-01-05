@@ -1,3 +1,9 @@
 <li>
   <%= link_to client.name, client %>
+   <% if current_user.isAdmin? %>
+   <div class "buttons" id="delete_edit_buttons" style="display: inline" >
+  	<%= button_to "delete", client, :method => :delete %>
+  	<%= button_to "edit", client, :method => :edit %>
+  </div>
+  <% end %>
 </li>

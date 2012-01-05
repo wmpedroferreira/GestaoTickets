@@ -19,8 +19,9 @@
       <%= f.password_field :password_confirmation %>
     </div>
     <div class ="field">
-      <%= f.label "Tipo de Utilizador" %> <br/>
-      <%= f.text_field :tipo_user_id, :readonly => true %> <br/>
+      <%= f.label :tipo_user_id %>
+      <%= f.select :tipo_user_id, ["Client", "Gestor", "Admin"] %>
     </div>
+   
     <img src = '<%= @user.imgPath %>'>
    
