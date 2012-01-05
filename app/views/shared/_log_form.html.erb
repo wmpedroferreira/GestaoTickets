@@ -1,0 +1,15 @@
+<%= form_for @log do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+  	<label for="Subject">Subject: </label>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+  	<label for="Message">Message: </label>
+    <%= f.text_field :message %>
+  </div>
+   
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

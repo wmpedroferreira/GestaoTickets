@@ -11,7 +11,7 @@ end
 #  id         :integer         not null, primary key
 #  ticket_id  :string(255)
 #  subject    :string(255)
-#  messagem   :string(255)
+#  message   :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #

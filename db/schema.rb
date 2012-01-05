@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120103124445) do
   create_table "logs", :force => true do |t|
     t.string   "ticket_id"
     t.string   "subject"
-    t.string   "messagem"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

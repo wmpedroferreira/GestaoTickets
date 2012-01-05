@@ -3,7 +3,7 @@ class CreateLogs < ActiveRecord::Migration
     create_table :logs do |t|
       t.string :ticket_id
       t.string :subject
-      t.string :messagem
+      t.string :message
 
       t.timestamps
     end

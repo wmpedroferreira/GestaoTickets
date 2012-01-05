@@ -6,12 +6,42 @@
     <%= javascript_include_tag :all %>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <%= csrf_meta_tag %>
-    <script language="JavaScript">
-function setVisibility(id, visibility) {
-document.getElementById(id).style.display = visibility;
-}
-</script>
+  <script>
+var browserType;
 
+if (document.layers) {browserType = "nn4"}
+if (document.all) {browserType = "ie"}
+if (window.navigator.userAgent.toLowerCase().match("gecko")) {
+ browserType= "gecko"
+}
+
+function hide2(id) {
+  if (browserType == "gecko" )
+     document.poppedLayer =
+         eval('document.getElementById((id))');
+  else if (browserType == "ie")
+     document.poppedLayer =
+        eval('document.getElementById(id)');
+  else
+     document.poppedLayer =
+        eval('document.layers[id]');
+  document.poppedLayer.style.display = "none";
+}
+
+function show2(id) {
+  if (browserType == "gecko" )
+     document.poppedLayer =
+         eval('document.getElementById(id)');
+  else if (browserType == "ie")
+     document.poppedLayer =
+        eval('document.getElementById(id)');
+  else
+     document.poppedLayer =
+         eval('document.layers[id]');
+  document.poppedLayer.style.display = "inline";
+}
+
+</script>
   </head>
   <body>
     <div class="container">

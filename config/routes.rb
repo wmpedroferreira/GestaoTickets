@@ -14,7 +14,8 @@ SampleApp::Application.routes.draw do
 
   resources :tickets
 
-
+  resources :logs
+  
   
   root :to => "pages#home"
   match '/newprojects', :to => 'projects#new'

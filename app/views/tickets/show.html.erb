@@ -16,4 +16,31 @@
       <label for="intervention_id_field"><%= @ticket.intervention_id %></label><br />
       <label for="request_type_id_lbl">Request type:</label>
       <label for="request_type_id_field"><%= @ticket.request_type_id %></label><br />
+        <%= form_for(@log) do |t| %>
+            <%= render 'shared/log_form', :t => t %>
+         <% end %>
+
+
+        <% unless @logs.empty? %>
+        <table class="logs" id="logs2" summary="ticket logs" style="display: inline">
+
+         <form>
+              <input type=button name=type value='Hide Logs' onclick="hide2('logs2');";>
+              <input type=button name=type value='Show Logs' onclick="show2('logs2');";>
+         </form> 
+         <% @logs.each do |log| %>        
+         <div id= "<%= log.id %>" >
+         <h1>
+
+           <tr>
+             <td><label for="subject">Subject: </label><%= log.subject %></td>
+             <td><label for="message">message: </label><%= log.message %></td>
+             <td><label for="message">Data: </label><%= log.created_at %></td>
+           </tr>
+          </h1>
+         </div>
+        <% end %> 
+        </table>     
+        <% end %>
+
   </div>
