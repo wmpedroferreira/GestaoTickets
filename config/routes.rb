@@ -1,4 +1,4 @@
-SampleApp::Application.routes.draw do
+GestorTickets::Application.routes.draw do
 
 
   resources :users do
