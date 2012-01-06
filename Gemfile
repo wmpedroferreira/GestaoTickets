@@ -21,3 +21,8 @@ group :test do
   gem 'autotest'
   gem 'autotest-growl'
 end
+
+
+group :production do
+  gem 'pg'
+end
