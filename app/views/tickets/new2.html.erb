@@ -1,0 +1,10 @@
+<h1>Tickets</h1>
+
+<%= form_for(@ticket) do |t| %>
+    <div class="field">
+      <%= t.label :project_id %>  <br />
+       <%= t.collection_select :project_id, @projects, :id,:title %>
+    </div>
+  	<%= render 'fields', :t => t %>
+      
+<% end %>

@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(:version => 20120103124445) do
     t.string   "ticket_id"
     t.string   "subject"
     t.string   "message"
+    t.string   "close_ticket"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "logs", ["ticket_id", "created_at"], :name => "index_logs_on_ticket_id_and_created_at"
 
   create_table "projects", :force => true do |t|
     t.string   "title"

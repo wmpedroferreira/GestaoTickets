@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @clients = Client.all
     @title = "Edit Project"
   end
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:show, :new, :create]
+  before_filter :authenticate, :except => [:new, :create]
   
   def index
     @users = User.paginate(:page => params[:page])
@@ -21,13 +21,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      if @user.tipo_user_id == "Client"
-        redirect_to @user, :flash => { :success => "Define Client!" }  
-      else
-        @title = "Edit user"
-        render 'edit'
-      end
-    else
+      redirect_to @user, :flash => { :success => "Worked!" }  
+    elsif
       @title = "Sign up"
       render 'new'
     end
@@ -39,9 +34,10 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user, :flash => { :success => "Profile updated." }
-    else
+      redirect_to @user
+    elsif
       @title = "Edit user"
       render 'edit'
     end

@@ -4,7 +4,7 @@ class CreateLogs < ActiveRecord::Migration
       t.string :ticket_id
       t.string :subject
       t.string :message
-
+      t.string :close_ticket
       t.timestamps
     end
     add_index :logs, [:ticket_id, :created_at]  

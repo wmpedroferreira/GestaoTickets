@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :new, :show]
   before_filter :admin_user,   :only => [:destroy, :new, :create]
+
   def index
     @clients = Client.paginate(:page => params[:page])
     @title = "All Clients"
@@ -26,7 +27,7 @@ class ClientsController < ApplicationController
   private
 
   def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path) unless current_user.isAdmin?
     end
 
 end

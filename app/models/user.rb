@@ -15,9 +15,8 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length => { :within => 6..40 },
                        :on=> :create
-
   validates :password, :length => { :within => 6..40 }
-
+                                                
   before_save :encrypt_password
   
   def has_password?(submitted_password)
@@ -40,11 +39,7 @@ class User < ActiveRecord::Base
   def imgPath
     img_file_path
   end
-  
-  def update_with_password(params={})
-    params.delete(:current_password)
-    self.update_without_password(params)
-  end
+
 
   def isAdmin?
     if tipo_user_id == "Admin"

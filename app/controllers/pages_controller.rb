@@ -21,5 +21,6 @@ class PagesController < ApplicationController
 
   def tickets
     $active_tickets = Ticket.where( :state_id => "Open")
+    @ticket = Ticket.new
   end
 end

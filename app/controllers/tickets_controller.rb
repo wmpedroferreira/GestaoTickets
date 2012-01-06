@@ -4,14 +4,24 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @states = [["Open"]]
+    @urgencies = [["Low"], ["Medium"], ["High"]]
   end
 
+  def new2
+    @ticket = Ticket.new
+    @projects = Project.all
+    @states =  [["Open"]]
+    @urgencies = [["Low"], ["Medium"], ["High"]]
+  end
   def create
     @ticket =  Ticket.new(params[:ticket])
-    @ticket.project_id = $projecto.id
+    if @ticket.project_id == nil      
+        @ticket.project_id = $projecto.id
+    end
     @ticket.user_id = current_user.id
     if @ticket.save
-      redirect_to projects_path, :flash => { :success => "Ticket created!" }
+      redirect_to @ticket, :flash => { :success => "Ticket created!" }
     else
       @feed_items = []
       render 'pages/home'
@@ -23,6 +33,8 @@ class TicketsController < ApplicationController
     $current_ticket = @ticket
     @logs = @ticket.logs.paginate(:page => params[:page])
     @log = Log.new
+    @states =  [["Open"], ["Being handled"],["Closed"]]
+    @urgencies = [["Low"], ["Medium"], ["High"]]
   end
 
   def destroy

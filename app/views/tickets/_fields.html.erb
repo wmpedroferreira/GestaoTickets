@@ -1,11 +1,11 @@
 <%= form_for(@ticket) do |t| %>
    <div class="field">
       <%= t.label :state_id %><br />
-      <%= t.text_field :state_id %>
+      <%= t.select :state_id, @states %>
     </div>
     <div class="field">
       <%= t.label :urgency_id %><br />
-      <%= t.text_field :urgency_id %>
+      <%= t.select :urgency_id, @urgencies %>
     </div>
     <div class="field">
       <%= t.label :intervention_id %><br />

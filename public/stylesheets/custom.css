@@ -1,9 +1,10 @@
 .container {
-  width: 710px;
+  margin: 0 auto;
+  width: 1000px;
 }
 
 body {
-  background: #cff;
+  background: #000;
 }
 
 header {
@@ -136,6 +137,15 @@ td.sidebar {
   margin-bottom: -15px;
 }
 
+#logo {
+  height:250px;
+  border: 1px solid #000;
+  width:500px;
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+  background-color: #000;
+}
 div.field, div.actions {
   margin-bottom: 10px;
 }

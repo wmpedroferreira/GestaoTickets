@@ -1,8 +1,9 @@
+<div id ="user_list" class ="user">
 <li>
   <%= link_to user.name, user %>
   <% if current_user.isAdmin? %>
-  |
   <%= button_to "delete", user, :method => :delete, :confirm => "You sure?",
                               :title => "Delete #{user.name}" %>
   <% end %>
 </li>
+</div>

@@ -8,7 +8,11 @@
   	<label for="Message">Message: </label>
     <%= f.text_field :message %>
   </div>
-   
+  <div class ="field">
+      <%= f.label :close_ticket %>
+      <%= f.select :close_ticket, ["Yes", "No"] %>
+    </div>
+
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>

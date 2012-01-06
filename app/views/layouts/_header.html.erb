@@ -1,6 +1,5 @@
 <header>
-  <%= link_to logo, root_path %>
-  <br />
+  <img id="logo" src="/images/logo.png" border="0" align="centered"/>
 
   <nav class="round">
     <ul>
@@ -12,7 +11,7 @@
       <% if signed_in? %>
       <li><%= link_to "Projects", projects_path %></li>
       <li><%= link_to "Users", users_path %></li>
-      <li><%= link_to "Tickets", tickets_path %></li>
+      <li><%= link_to "Tickets", activetickets_path %></li>
       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
       <% if @current_user.isAdmin? %>
       <li><%= link_to "Clients", clients_path %></li>

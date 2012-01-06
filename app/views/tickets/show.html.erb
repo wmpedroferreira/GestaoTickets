@@ -5,9 +5,12 @@
       <label for="Submitted_date_lbl">Submitted date:</label>
       <label for="Submitted_date_field"><%= @ticket.created_at %></label>
       <label for="user_id_lbl">User:</label>
-      <label for="user_id_field"><%= @ticket.user_id %></label><br />
+      <% @u = User.find_by_id(@ticket.user_id) %>
+
+      <label for="user_id_field"><%= @u.name %></label><br />
       <label for="project_id_lbl">Project:</label>
-      <label for="project_id_field"><%= @ticket.project_id %></label><br />
+      <% @p = Project.find_by_id(@ticket.project_id) %>
+      <label for="project_id_field"><%= @p.title %></label><br />
       <label for="state_id_lbl">State:</label>
       <label for="state_id_field"><%= @ticket.state_id %></label><br />
       <label for="urgency_id_lbl">Urgency:</label>
