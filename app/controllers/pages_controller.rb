@@ -18,4 +18,8 @@ class PagesController < ApplicationController
   def help
     @title = "Help"
   end
+
+  def tickets
+    $active_tickets = Ticket.where( :state_id => "Open")
+  end
 end

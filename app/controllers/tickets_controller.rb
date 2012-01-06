@@ -31,7 +31,5 @@ class TicketsController < ApplicationController
     redirect_to projects_path, :flash => { :success => "Ticket deleted!" }
   end
 
-  def active_tickets
-    $active_tickets = Ticket.find(:all, :condition => { :state_id == "Open"})
-  end
+
 end
