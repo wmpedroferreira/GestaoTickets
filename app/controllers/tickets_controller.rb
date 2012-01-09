@@ -31,6 +31,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     $current_ticket = @ticket
+    
     @logs = @ticket.logs.paginate(:page => params[:page])
     @log = Log.new
     @states =  [["Open"], ["Being handled"],["Closed"]]
