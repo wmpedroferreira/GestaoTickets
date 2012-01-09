@@ -1,12 +1,15 @@
 <% if signed_in? %>
-  <div> Active Tickets from all Projects </div>
-  <table class="front" summary="Active Tickets">
-    <tr>
-      <td class="tickets">
-        <%= render $active_tickets %>
-      </td>
-    </tr>
-  </table>
+  <% if !current_user.isClient? %>
+
+      <div> Active Tickets from all Projects </div>
+      <table class="front" summary="Active Tickets">
+        <tr>
+          <td class="tickets">
+            <%= render $active_tickets %>
+          </td>
+        </tr>
+      </table>
+  <% end %>
 
   <div> Submit new Ticket </div>
   <%= link_to( "New Ticket", newticket_path) %>

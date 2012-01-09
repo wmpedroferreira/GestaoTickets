@@ -18,7 +18,8 @@
       <label for="intervention_id_field"><%= ticket.intervention_id %></label><br />
       <label for="request_type_id_lbl">Request type:</label>
       <label for="request_type_id_field"><%= ticket.request_type_id %></label><br />
-      <%= link_to "Show Ticket", ticket %>
-      
+      <% if !current_user.isClient? %>
+            <%= link_to "Show Ticket", ticket %>
+      <% end %>
   </div>
 

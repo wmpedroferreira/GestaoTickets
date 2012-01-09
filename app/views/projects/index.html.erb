@@ -2,8 +2,14 @@
 <h1>All Projects</h1>
 <%= will_paginate %>
 <ul class="projects">
+<table border ="1">
+<tr>
+<th>Project Title</th>
+<th>Admin</th>
+<th>Go To</th>
+</tr>
   <%= render @projects %>
 </ul>
-
+</table>
 <%= will_paginate %>
 

@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_filter :authenticate
+  before_filter :correct_user,  :only => :show
   before_filter :admin_user,   :only => :destroy
 
   def new
@@ -44,5 +45,11 @@ class TicketsController < ApplicationController
     redirect_to projects_path, :flash => { :success => "Ticket deleted!" }
   end
 
+  private
 
+  def correct_user
+    if current_user.isClient?
+      redirect_to root_path
+    end
+  end
 end

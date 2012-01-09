@@ -1,13 +1,9 @@
 <table class="profile" summary="Profile information">
   <tr>
-    <td class="main">
-      <h1>
-         <img src = '<%= @user.imgPath %>' class="Logo">
-      </h1>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+    <td class="main" >
+         <img src = '<%= @user.imgPath %>' class="Logo"></br>
+         <strong>Name: </strong><%= @user.name %><br />
+         <strong>Email: </strong><%= @user.email %><br />
     </td>
   </tr>
 </table>

@@ -1,24 +1,22 @@
 <% content_for :scripts do %>
 <script type="text/javascript" ..... ></script>
 <% end %>
-<table class="project" summary="Project information">
-  <tr>
-    <td class="sidebar round">
-      <strong>Title</strong> <%= @project.title %><br />
-      <strong>Client</strong>  <%= @project.client_id %><br />
-      <strong>Admin</strong>  <%= @project.admin_id %><br />
-      <strong>Description</strong>  <%= @project.description %><br />
-    </td>
-  </tr>
-</table>
-<% if @current_user.isAdmin? %>
-  <%= link_to 'Edit Project', edit_project_path(@project) %>
-<% end %>
-<% if @current_user.isGestor? %>
-    <%= link_to( "New Ticket", new_ticket_path(@project)) %>
-    <table class="tickets" summary="Project Tickets">
-    <%= will_paginate @tickets %>
-    <%= render @tickets %>
-    <%= will_paginate @tickets %>
-    </table>
-<% end %>
+  <table class="project" summary="Project information">
+    <tr>
+      <td class="sidebar round">
+        <strong>Title</strong> <%= @project.title %><br />
+        <% @u = User.find(Integer(@project.admin_id)) %>
+        <strong>Admin</strong>  <%= @u.name %><br />
+        <strong>Description</strong>  <%= @project.description %><br />
+      </td>
+    </tr>
+  </table>
+  <% if @current_user.isAdmin? %>
+    <%= link_to 'Edit Project', edit_project_path(@project) %>
+  <% end %>
+  <%= link_to( "New Ticket", new_ticket_path(@project)) %>
+  <table class="tickets" summary="Project Tickets">
+  <%= will_paginate @tickets %>
+  <%= render @tickets %>
+  <%= will_paginate @tickets %>
+  </table>

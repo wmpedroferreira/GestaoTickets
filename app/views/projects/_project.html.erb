@@ -1,4 +1,8 @@
 <li>
-	<%= project.title %> TODO TABLE COM CLIENT_ID,ADMIN_ID  
-  <%= link_to "Select", project %>
+<tr>
+<td><%= project.title %></td>
+<% @u = User.find(Integer(project.admin_id)) %>
+<td><%= @u.name %></td>
+<td><%= link_to "Select", project %></td>
+</tr>
 </li>

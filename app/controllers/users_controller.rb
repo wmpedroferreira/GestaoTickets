@@ -15,15 +15,25 @@ class UsersController < ApplicationController
   def new
     @user  = User.new
     @title = "Sign up"
-  
   end
-  
+
+  def newBack
+    @user  = User.new
+    @title = "Sign up"
+  end
+
   def create
     @user = User.new(params[:user])
+    
+        
     if @user.save
       sign_in @user
-      redirect_to @user, :flash => { :success => "Worked!" }  
-    elsif
+      if @user.isClient?
+        redirect_to new_client_path, :flash => { :success => "User created! Now create client!" }  
+      else
+        redirect_to @user, :flash => { :success => "User created!" }  
+      end
+    else
       @title = "Sign up"
       render 'new'
     end
