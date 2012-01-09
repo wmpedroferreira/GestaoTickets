@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   
-  attr_accessible(:name, :short_name)
+  attr_accessible(:name, :short_name, :user_id)
 end
 # == Schema Information
 #

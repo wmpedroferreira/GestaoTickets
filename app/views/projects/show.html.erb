@@ -1,7 +1,7 @@
 <% content_for :scripts do %>
 <script type="text/javascript" ..... ></script>
 <% end %>
-  <table class="project" summary="Project information">
+  <table class="project" summary="Project information" border ="1">
     <tr>
       <td class="sidebar round">
         <strong>Title</strong> <%= @project.title %><br />
@@ -15,8 +15,22 @@
     <%= link_to 'Edit Project', edit_project_path(@project) %>
   <% end %>
   <%= link_to( "New Ticket", new_ticket_path(@project)) %>
-  <table class="tickets" summary="Project Tickets">
+  <% if !@tickets.empty? %>
+  <h3>
+  <table class="tickets" summary="Project Tickets" border="2">
+  <tr>
+  <th>Submitted Date:</th>
+  <th>Client:</th>
+  <th>Project:</th>
+  <th>State:</th>
+  <th>Urgency:</th>
+  <th  style="max-width: 100px;">Intervention:</th>
+  <th>Request Type:</th>
+  <th>Actions:</th>
+  </tr>
   <%= will_paginate @tickets %>
   <%= render @tickets %>
   <%= will_paginate @tickets %>
   </table>
+  </h3>
+  <% end %>

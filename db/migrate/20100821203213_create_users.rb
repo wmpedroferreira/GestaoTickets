@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :img_file_path
-      t.string :client_admin_gestor_id
       t.string :tipo_user_id
       t.timestamps
     end

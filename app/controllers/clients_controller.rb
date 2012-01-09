@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate, :only => [:index, :show]
-  before_filter :client_user,   :only => [:new, :create]
+  before_filter :client_user,   :only => [:new, :create, :show, :index]
 
   def index
     @clients = Client.paginate(:page => params[:page])
@@ -19,8 +19,9 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(params[:client])
+    @client.user_id = current_user.id.to_s
     @client.save
-    redirect_to clients_path, :flash => { :success => "Worked created Client" }  
+    redirect_to root_path, :flash => { :success => "Worked created Client" }  
   end
 
 

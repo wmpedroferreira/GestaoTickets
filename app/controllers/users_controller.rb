@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :except => [:new, :create]
+  before_filter :authenticate, :except => [:new, :create, :newBack]
   before_filter :correct_user, :only => [:edit, :update]
   
   def index
@@ -15,11 +15,13 @@ class UsersController < ApplicationController
   def new
     @user  = User.new
     @title = "Sign up"
+    @user.password = ""
   end
 
   def newBack
     @user  = User.new
     @title = "Sign up"
+    @user.password = ""
   end
 
   def create

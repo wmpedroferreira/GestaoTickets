@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20120103124445) do
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.string   "short_name"
+    t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,17 +52,17 @@ ActiveRecord::Schema.define(:version => 20120103124445) do
     t.datetime "updated_at"
   end
 
+  add_index "tickets", ["user_id", "created_at"], :name => "index_tickets_on_user_id_and_created_at"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "img_file_path"
-    t.string   "client_admin_gestor_id"
     t.string   "tipo_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

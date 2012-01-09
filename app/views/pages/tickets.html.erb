@@ -1,13 +1,18 @@
 <% if signed_in? %>
   <% if !current_user.isClient? %>
 
-      <div> Active Tickets from all Projects </div>
-      <table class="front" summary="Active Tickets">
+      <div> Active Tickets from all Projects </div><br />
+      <table class="front" summary="Active Tickets" border ="1">
         <tr>
-          <td class="tickets">
-            <%= render $active_tickets %>
-          </td>
+        <th>Date</th>
+        <th>Client</th>
+        <th>Project</th>
+        <th>State</th>
+        <th>Priority</th>
+        <th>Request Type</th>
+        <th>Intervention</th>
         </tr>
+        <%= render $active_tickets %>          
       </table>
   <% end %>
 

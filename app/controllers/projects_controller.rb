@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate
-  before_filter :correct_user,   :only => [:new, :create, :edit]
 
   def index
     @projects = Project.paginate(:page => params[:page])
@@ -13,8 +12,10 @@ class ProjectsController < ApplicationController
     $projecto = @project
     @store = Ticket.find(:all, :conditions => { :project_id  => @project.id })
     @tickets = @store.paginate(:page => params[:page])
-    if !(current_user.id.to_s.eql?(@project.admin_id))    
-      redirect_to root_path , :flash => { :success => "Cannot acess Project" }  
+    if !(current_user.id.to_s.eql?(@project.admin_id))     
+        if !current_user.isAdmin? 
+          redirect_to root_path , :flash => { :success => "Cannot acess Project" }  
+        end
     end
   end
 

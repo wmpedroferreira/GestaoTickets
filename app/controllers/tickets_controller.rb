@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_filter :authenticate
-  before_filter :correct_user,  :only => :show
-  before_filter :admin_user,   :only => :destroy
+  before_filter :admin_user,   :only => [:destroy, :edit]
+  before_filter :not_client,   :only => [:show]
 
   def new
     @ticket = Ticket.new
@@ -22,7 +22,7 @@ class TicketsController < ApplicationController
     end
     @ticket.user_id = current_user.id
     if @ticket.save
-      redirect_to @ticket, :flash => { :success => "Ticket created!" }
+      redirect_to projects_path, :flash => { :success => "Ticket created!" }
     else
       @feed_items = []
       render 'pages/home'
@@ -32,7 +32,6 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     $current_ticket = @ticket
-    
     @logs = @ticket.logs.paginate(:page => params[:page])
     @log = Log.new
     @states =  [["Open"], ["Being handled"],["Closed"]]
@@ -47,9 +46,15 @@ class TicketsController < ApplicationController
 
   private
 
-  def correct_user
+  def admin_user
+    if !current_user.isAdmin?
+      redirect_to root_path, :flash => { :success => "Wrong permissions" }
+    end
+  end
+
+  def not_client
     if current_user.isClient?
-      redirect_to root_path
+      redirect_to projects_path, :flash => { :sucess => "Wrong permissions"}
     end
   end
 end

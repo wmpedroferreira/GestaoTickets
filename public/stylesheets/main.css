@@ -33,6 +33,11 @@ section h2 {
   font-weight: normal;
 }
 
+section h3 {
+  font-size: 70%;
+  font-weight: normal;
+}
+
 .round {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;

@@ -1,25 +1,30 @@
-  <div class="tickets">
-  <br />
-      TODO Create table and layout
-   <br />
-      <label for="Submitted_date_lbl">Submitted date:</label>
-      <label for="Submitted_date_field"><%= ticket.created_at %></label>
-      <label for="user_id_lbl">User:</label>
-      <% @u = User.find_by_id(ticket.user_id) %>
-      <label for="user_id_field"><%= @u.name %></label><br />
-      <label for="project_id_lbl">Project:</label>
+<tr>
+<td>  
+      <label for="Submitted_date_field"><%= ticket.created_at.strftime("%a %b #{ticket.created_at.day.ordinalize}") %></label>
+</td>
+<td>
+      <% @c = Client.find_by_id(Integer(ticket.user_id)) %>
+      <label for="user_id_field"><%= @c.short_name %></label>
+</td>
+<td>
       <% @p = Project.find_by_id(ticket.project_id) %>
-      <label for="project_id_field"><%= @p.title %></label><br />
-      <label for="state_id_lbl">State:</label>
-      <label for="state_id_field"><%= ticket.state_id %></label><br />
-      <label for="urgency_id_lbl">Urgency:</label>
-      <label for="urgency_id_field"><%= ticket.urgency_id %></label><br />
-      <label for="intervention_id_lbl">Intervention:</label>
-      <label for="intervention_id_field"><%= ticket.intervention_id %></label><br />
-      <label for="request_type_id_lbl">Request type:</label>
-      <label for="request_type_id_field"><%= ticket.request_type_id %></label><br />
+      <label for="project_id_field"><%= @p.title %></label>
+</td>
+<td>
+      <label for="state_id_field"><%= ticket.state_id %></label>
+</td>
+<td>
+      <label for="urgency_id_field"><%= ticket.urgency_id %></label>
+</td>
+<td>
+      <label for="intervention_id_field"><%= ticket.intervention_id %></label>
+</td>
+<td>
+      <label for="request_type_id_field"><%= ticket.request_type_id %></label>
+</td>
+<td>
       <% if !current_user.isClient? %>
             <%= link_to "Show Ticket", ticket %>
       <% end %>
-  </div>
+</tr>
 

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible(:name, :email, :password, :password_confirmation, 
-                    :img_file_path, :client_admin_gestor_id, :tipo_user_id)
+                    :img_file_path, :tipo_user_id)
   
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
