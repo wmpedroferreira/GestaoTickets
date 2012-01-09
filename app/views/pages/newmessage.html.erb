@@ -1,0 +1,8 @@
+<h1>Send Message</h1>
+
+<%= form_for @message do |m| %>
+  <%= render 'fields', :m => m %>  
+  <div class="actions">
+    <%= m.submit "Send" %>
+  </div>
+<% end %>

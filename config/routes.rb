@@ -15,11 +15,14 @@ GestorTickets::Application.routes.draw do
   resources :tickets
 
   resources :logs
+
+  resources :messages
   
   
   root :to => "pages#home"
   match '/activetickets', :to => 'pages#tickets'
   match '/newticket',     :to => 'tickets#new2'
+  match '/newmessage',     :to => 'pages#newmessage'
   match '/newadmin',     :to => 'users#newBack'
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

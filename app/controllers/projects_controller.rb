@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
     @tickets = @store.paginate(:page => params[:page])
     if !(current_user.id.to_s.eql?(@project.admin_id))     
         if !current_user.isAdmin? 
-          redirect_to root_path , :flash => { :success => "Cannot acess Project" }  
+          if !current_user.isGestor?
+             redirect_to root_path , :flash => { :success => "Cannot acess Project" }  
+          end
         end
     end
   end

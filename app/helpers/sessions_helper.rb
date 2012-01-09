@@ -17,6 +17,15 @@ module SessionsHelper
     @current_project
   end
   
+  def pending_message=(message)
+    @pending_message = message
+  end
+
+  def pending_message
+    @pending_message
+  end
+  
+
   def current_user
     @current_user ||= user_from_remember_token
   end

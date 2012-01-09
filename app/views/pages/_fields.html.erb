@@ -1,0 +1,12 @@
+    <div class ="field">
+      <%= m.label :deliver_id %>
+       <%= m.collection_select :deliver_id, @users, :id,:name %>
+    </div>
+    <div class="field">
+      <%= m.label :subject %><br />
+      <%= m.text_field :subject %>
+    </div>
+    <div class="field">
+      <%= m.label :body %><br />
+      <%= m.text_area(:body, :cols => 50, :rows => 15) %>
+    </div>

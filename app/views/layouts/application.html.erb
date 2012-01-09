@@ -44,6 +44,24 @@ function show2(id) {
 }
 
 </script>
+<script type = "text/javascript">
+ function updateDiv() 
+ {
+    <% puts signed_in? %>
+    <% if signed_in? %>
+      <% pending_message = Message.find(:all, :conditions => {:deliver_id => current_user.id, :read => false})%>
+      <% unless pending_message.nil? %>
+          document.getElementById("updateMe").innerHTML = ""
+      <% pending_message.each do |message| %>
+          document.getElementById("updateMe").innerHTML += "From: <%=message.author_id%><br />Subject:<%= message.subject %><br />Content:<br/><%=message.body %><br />"
+                <% message.read = true %>
+                <% message.save %>
+                <% pending_message.delete message %>
+                <% end %>
+      <% end %>
+    <% end %>
+      }var timer = setInterval(updateDiv, 5000);
+</script>
   </head>
   <body>
     <div class="container">
@@ -59,3 +77,4 @@ function show2(id) {
     </div>
   </body>
 </html>
+
