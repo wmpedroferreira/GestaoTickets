@@ -13,7 +13,7 @@
   <div id ="updateMe" class="updateMe" >
     <%= render :partial => "pages/messages"  %>
   </div>
-  <%= periodically_call_remote(:update => "updateMe", :frequency => 5, :url => { :controller => "pages", :action => :messages } ) %>
+  <%= periodically_call_remote(:update => "updateMe", :frequency => 60, :url => { :controller => "pages", :action => :messages } ) %>
   <% end %>
   </ul>
   </nav>
