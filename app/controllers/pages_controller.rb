@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 
   def remove
-    @message = Message.find(Integer(params[:message]))
+    @message = Message.find(params[:message])
     @message.read = true
     @message.save
     redirect_to root_path

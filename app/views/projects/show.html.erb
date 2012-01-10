@@ -5,7 +5,7 @@
     <tr>
       <td class="sidebar round">
         <strong>Title</strong> <%= @project.title %><br />
-        <% @u = User.find(Integer(@project.admin_id)) %>
+        <% @u = User.find(@project.admin_id) %>
         <strong>Admin</strong>  <%= @u.name %><br />
         <strong>Description</strong>  <%= @project.description %><br />
       </td>

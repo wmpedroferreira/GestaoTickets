@@ -1,7 +1,7 @@
 <li>
 <tr>
 <td><%= project.title %></td>
-<% @u = User.find(Integer(project.admin_id)) %>
+<% @u = User.find(project.admin_id) %>
 <td><%= @u.name %></td>
 <td><%= link_to "Select", project %></td>
 </tr>
