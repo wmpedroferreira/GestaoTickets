@@ -1,7 +1,7 @@
 class CreateLogs < ActiveRecord::Migration
   def self.up
     create_table :logs do |t|
-      t.string :ticket_id
+      t.integer :ticket_id
       t.string :subject
       t.string :message
       t.string :close_ticket

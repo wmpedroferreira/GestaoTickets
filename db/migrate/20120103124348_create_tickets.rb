@@ -1,8 +1,8 @@
 class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
-      t.string :user_id
-      t.string :project_id
+      t.integer :user_id
+      t.integer :project_id
       t.string :state_id
       t.string :urgency_id
       t.string :intervention_id
