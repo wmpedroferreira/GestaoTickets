@@ -9,8 +9,12 @@
   </nav>
   <nav class ="round" id>
   <ul>
-  <div id ="updateMe" class ="updateMe" align= left>
+  <% if signed_in? %>
+  <div id ="updateMe" class="updateMe" >
+    <%= render :partial => "pages/messages"  %>
   </div>
+  <%= periodically_call_remote(:update => "updateMe", :frequency => 5, :url => { :controller => "pages", :action => :messages } ) %>
+  <% end %>
   </ul>
   </nav>
 </footer>

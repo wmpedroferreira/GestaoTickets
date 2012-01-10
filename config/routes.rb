@@ -20,6 +20,8 @@ GestorTickets::Application.routes.draw do
   
   
   root :to => "pages#home"
+  match '/pages/messages', :controller => 'pages', :action=> 'messages'
+  match '/pages/remove', :controller => 'pages', :action=> 'remove'
   match '/activetickets', :to => 'pages#tickets'
   match '/newticket',     :to => 'tickets#new2'
   match '/newmessage',     :to => 'pages#newmessage'

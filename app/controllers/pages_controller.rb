@@ -12,12 +12,22 @@ class PagesController < ApplicationController
     @title = "Contact"
   end
   
+
   def about
     @title = "About"
   end
   
-  def get_messages
-    $pending_messages = Message.find(:all, :conditions => {:deliver_id => current_user.id, :read => false})
+  def messages
+    if signed_in?
+      render :partial => 'pages/messages'
+    end
+  end
+
+  def remove
+    @message = Message.find(Integer(params[:message]))
+    @message.read = true
+    @message.save
+    redirect_to root_path
   end
 
   def help

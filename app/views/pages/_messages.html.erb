@@ -1,0 +1,22 @@
+<h3>  <table class="front" summary="Messages" border="2" align=center>
+  <tr>
+  <th>Author:</th>
+  <th>Subject:</th>
+  <th>Body:</th>
+  <th></th>
+  </tr>
+    <% if signed_in? %>
+      <% pending_message = Message.find(:all, :conditions => {:deliver_id => current_user.id, :read => false})%>
+      <% unless pending_message.nil? %>
+      <% pending_message.each do |message| %>
+      <tr>
+      <td><%=message.author_id%></td>
+      <td><%= message.subject %></td>
+      <td><%=message.body %></td>
+      <td><%= link_to "Remove", :controller => "pages", :action => "remove", :message => message %></td>
+      </tr>
+                <% end %>
+      <% end %>
+    <% end %>
+    </table>
+</h3>

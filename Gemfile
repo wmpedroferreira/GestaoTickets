@@ -3,7 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.11'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
-
+gem 'jquery-rails'
+gem 'rack-pjax'
 gem 'simple_form'
 
 group :development do
