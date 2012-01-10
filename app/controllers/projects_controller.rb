@@ -29,7 +29,14 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(params[:project])
-    @project.admin_id = current_user.id
+    puts @project.admin_id
+    @c = Client.find(@project.admin_id)
+    @u = User.find(@c.user_id)
+    if @project.admin_id.nil?
+      @project.admin_id = current_user.id
+    else
+      @project.admin_id = @u.id
+    end
     @project.save
     redirect_to projects_path, :flash => { :success => "SUCESSO!" }  
   end

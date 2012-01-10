@@ -2,8 +2,11 @@
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
-  <%= render 'fields1', :f => f %>
-  
+  <% if @user.isAdmin? %>
+    <%= render 'fields', :f => f %>
+  <% else %>
+    <%= render 'fields1', :f => f %>
+  <% end %>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

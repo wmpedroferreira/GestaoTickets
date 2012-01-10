@@ -1,6 +1,12 @@
 <h1>Projects</h1>
 
 <%= form_for(@project) do |f| %>
+  <% if current_user.isGestor? %>
+   <div class ="field">
+      <%= f.label :admin_id %>
+       <%= f.collection_select :admin_id, @clients, :id,:name %>
+    </div>
+  <% end %>
   <%= render 'fields', :f => f %>
   <div class="actions">
     <%= f.submit "Submit Project" %>

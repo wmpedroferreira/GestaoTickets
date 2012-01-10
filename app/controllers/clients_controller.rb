@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate, :only => [:index, :show]
-  before_filter :client_user,   :only => [:new, :create, :show, :index]
+  before_filter :client_user,   :only => [ :show, :index]
 
   def index
     @clients = Client.paginate(:page => params[:page])
@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
   private
 
   def client_user
-      redirect_to(root_path) unless current_user.isClient?
+      redirect_to(root_path) if current_user.isClient?
     end
 
 end
