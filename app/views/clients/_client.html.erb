@@ -1,5 +1,5 @@
 <li>
-  <%= client.name %><%= client.short_name %>
+  <%= client.name %><br /><%= client.short_name %>
    <% if current_user.isAdmin? %>
    <div class "buttons" id="delete_edit_buttons" style="display: inline" >
   	<%= button_to "delete", client, :method => :delete %>
