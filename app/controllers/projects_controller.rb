@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   	@project = Project.find(params[:id])
     @title = @project.title
     $projecto = @project
-    @store = Ticket.find(:all, :conditions => { :project_id  => Integer(@project.id) })
+    @store = Ticket.find(:all, :conditions => { :project_id.to_i  => @project.id })
     @tickets = @store.paginate(:page => params[:page])
     if !(current_user.id.to_s.eql?(@project.admin_id))     
         if !current_user.isAdmin? 
