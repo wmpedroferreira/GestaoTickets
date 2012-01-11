@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @title = "Home"
     if signed_in? 
-      $pending_messages = Message.find(:all, :conditions => {:deliver_id => current_user.id, :read => false})
+      $pending_messages = Message.find(:all, :conditions => {:deliver_id => current_user.id.to_s, :read => false})
     end
   end
 
