@@ -18,9 +18,6 @@
         <li><%= link_to "New Ticket", newticket_path %></li>
       <% end %>
       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <% if @current_user.isAdmin? %>
-      <li><%= link_to "Clients", clients_path %></li>
-      <% end %>
       <li><%= link_to "Sign out", signout_path %></li>
       <% else %>
       <li><%= link_to "Sign in", signin_path %></li>
