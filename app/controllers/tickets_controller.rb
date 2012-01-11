@@ -20,10 +20,12 @@ class TicketsController < ApplicationController
   def create
     @ticket =  Ticket.new(params[:ticket])
     if @ticket.project_id == nil      
-        @ticket.user_id = current_user.id
+      
         @ticket.project_id = $projecto.id
     end
-    
+    if @ticket.user_id == nil
+      @ticket.user_id = current_user.id
+    end
     @p = Project.find(@ticket.project_id)
     puts @ticket.user_id
     puts @p.admin_id
