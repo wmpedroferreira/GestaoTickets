@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.paginate(:page => params[:page])
-    @title = "All Clients"
+    @title = "All Clients"   
   end
   
   def show
