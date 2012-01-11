@@ -6,7 +6,7 @@
   <th></th>
   </tr>
     <% if signed_in? %>
-      <% pending_message = Message.find(:all, :conditions => [ 'deliver_id = ? AND read = ?' ,current_user.id.to_s, false})%>
+      <% pending_message = Message.find(:all, :conditions => [ 'deliver_id = ? AND read = ?' ,current_user.id.to_s, false])%>
       <% unless pending_message.nil? %>
       <% pending_message.each do |message| %>
       <tr>
