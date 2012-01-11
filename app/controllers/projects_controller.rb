@@ -30,15 +30,14 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     
-    @c = Client.find(Integer(@project.admin_id))
-    @u = User.find(Integer(@c.user_id))
-    puts @project.admin_id 
-    @project.admin_id = @u.id
-    
-    puts @u.id
     if current_user.isClient?
       @project.admin_id = current_user.id
-    end
+    else
+        @c = Client.find(@project.admin_id)
+        @u = User.find(@c.user_id)
+        @project.admin_id = @u.id
+    end   
+    
     @project.save
     redirect_to projects_path, :flash => { :success => "SUCESSO!" }  
   end
