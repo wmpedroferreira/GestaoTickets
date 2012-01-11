@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   before_filter :authenticate
   before_filter :admin_user,   :only => [:destroy, :edit]
-  before_filter :not_client,   :only => [:show]
+  before_filter :correctclient,   :only => [:show]
 
   def new
     @ticket = Ticket.new
@@ -53,8 +53,8 @@ class TicketsController < ApplicationController
     end
   end
 
-  def not_client
-    if current_user.isClient?
+  def correctclient
+    if current_user.isClient? && current_user.id == params[:id]
       redirect_to projects_path, :flash => { :sucess => "Wrong permissions"}
     end
   end
