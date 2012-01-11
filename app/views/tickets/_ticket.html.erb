@@ -3,8 +3,8 @@
       <label for="Submitted_date_field"><%= ticket.created_at.strftime("%a %b #{ticket.created_at.day.ordinalize}") %></label>
 </td>
 <td>
-      <% puts ticket.user_id %>
-      <label for="user_id_field"><%= ticket.user_id %></label>
+      <% @u = User.find(ticket.user_id) %>
+      <label for="user_id_field"><%= @u.name %></label>
 </td>
 <td>
       <% @p = Project.find_by_id(ticket.project_id) %>
