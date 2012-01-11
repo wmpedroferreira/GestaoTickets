@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     $projecto = @project
     @store = Ticket.find(:all, :conditions => [ 'project_id = ?', @project.id.to_s ])
     @tickets = @store.paginate(:page => params[:page])
-    if !(current_user.id.to_s.eql?(@project.admin_id))     
+    if !(current_user.id == @project.admin_id)     
         if !current_user.isAdmin? 
           if !current_user.isGestor?
              redirect_to root_path , :flash => { :success => "Cannot acess Project" }  
