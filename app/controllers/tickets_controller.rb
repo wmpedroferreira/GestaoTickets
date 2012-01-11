@@ -29,9 +29,12 @@ class TicketsController < ApplicationController
     @p = Project.find(@ticket.project_id)
     puts @ticket.user_id
     puts @p.admin_id
-    if !(@ticket.user_id == @p.admin_id)
-      redirect_to projects_path, :flash => { :fail => "Cannot insert ticket in that project!" }
-    elsif @ticket.save
+    if !current_ticket.isAdmin?
+        if !(@ticket.user_id == @p.admin_id)
+          redirect_to projects_path, :flash => { :fail => "Cannot insert ticket in that project!" }
+        end
+    end
+    if @ticket.save
       redirect_to projects_path, :flash => { :success => "Ticket created!" }
     else
       redirect_to projects_path, :flash => { :fail => "Error creating ticket!" }
