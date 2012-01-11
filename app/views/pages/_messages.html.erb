@@ -10,7 +10,8 @@
       <% unless pending_message.nil? %>
       <% pending_message.each do |message| %>
       <tr>
-      <td><%=message.author_id%></td>
+      <%= @u = User.find(message.author_id) %>
+      <td><%=@u.name%></td>
       <td><%= message.subject %></td>
       <td><%=message.body %></td>
       <td><%= link_to "Remove", :controller => "pages", :action => "remove", :message => message %></td>
