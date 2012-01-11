@@ -20,14 +20,14 @@ class TicketsController < ApplicationController
   def create
     @ticket =  Ticket.new(params[:ticket])
     if @ticket.project_id == nil      
-      
+        @ticket.user_id = current_user.id
         @ticket.project_id = $projecto.id
     end
-    @ticket.user_id = current_user.id
+    
     @p = Project.find(@ticket.project_id)
     puts @ticket.user_id
     puts @p.admin_id
-    if !(@ticket.user_id.to_i == @p.admin_id.to_i)
+    if !(@ticket.user_id == @p.admin_id)
       redirect_to projects_path, :flash => { :fail => "Cannot insert ticket in that project!" }
     elsif @ticket.save
       redirect_to projects_path, :flash => { :success => "Ticket created!" }
