@@ -14,6 +14,8 @@
       <li><%= link_to "Send Message", "/newmessage" %></li>
       <% if  !@current_user.isClient? %>
         <li><%= link_to "Tickets", activetickets_path %></li>
+      <% else %>
+        <li><%= link_to "New Ticket", newtickets_path %></li>
       <% end %>
       <li><%= link_to "Settings", edit_user_path(current_user) %></li>
       <% if @current_user.isAdmin? %>
