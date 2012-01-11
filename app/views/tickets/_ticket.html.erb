@@ -4,7 +4,7 @@
 </td>
 <td>
       <% puts ticket.user_id %>
-      <% @c = Client.find_by_id(ticket.user_id) %>
+      <% @c = Client.find_by_id(ticket.user_id.to_i) %>
       <label for="user_id_field"><%= @c.short_name %></label>
 </td>
 <td>
