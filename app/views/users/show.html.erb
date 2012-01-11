@@ -4,9 +4,6 @@
          <img src = '<%= @user.imgPath %>' class="Logo"></br>
          <strong>Name: </strong><%= @user.name %><br />
          <strong>Email: </strong><%= @user.email %><br />
-         <% if current_user.isAdmin? %>
-         	<%= button_to "delete", @user, :method => :delete %>
-         <% end %>
     </td>
   </tr>
 </table>
