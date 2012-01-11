@@ -9,7 +9,7 @@ class LogsController < ApplicationController
 			$current_ticket.update_attributes( :state_id => "Open" )
 		end
 		if @log.save
-			redirect_to root_path
+			redirect_to $current_ticket , :flash => { :success => "Log inserted" }
 		end
 	end
 
