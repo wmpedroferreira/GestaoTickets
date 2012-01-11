@@ -7,8 +7,10 @@
        <%= f.collection_select :admin_id, @clients, :id,:name %>
     </div>
     <% else %>
-    <%= @project.admin_id = current_user.id %>
-  <% end %>
+      <% @project.admin_id = current_user.id %>
+      <% puts "ass" %>
+    <% end %>
+
   <%= render 'fields', :f => f %>
   <div class="actions">
     <%= f.submit "Submit Project" %>
