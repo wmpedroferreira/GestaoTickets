@@ -24,7 +24,7 @@ class TicketsController < ApplicationController
     end
     @ticket.user_id = current_user.id
     @p = Project.find(@ticket.project_id)
-    if !(current_user.id == @p.admin_id)
+    if !(@ticket.user_id == @p.admin_id)
       redirect_to projects_path, :flash => { :fail => "Cannot insert ticket in that project!" }
     elsif @ticket.save
       redirect_to projects_path, :flash => { :success => "Ticket created!" }
