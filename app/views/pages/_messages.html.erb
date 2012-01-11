@@ -10,7 +10,7 @@
       <% unless pending_message.nil? %>
       <% pending_message.each do |message| %>
       <tr>
-      <%= @u = User.find(message.author_id) %>
+      <% @u = User.find(message.author_id) %>
       <td><%=@u.name%></td>
       <td><%= message.subject %></td>
       <td><%=message.body %></td>
