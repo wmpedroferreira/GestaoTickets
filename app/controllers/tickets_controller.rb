@@ -13,6 +13,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
     @projects = Project.all
     @states =  [["Open"]]
+    @ticket.logs = []
     @urgencies = [["Low"], ["Medium"], ["High"]]
   end
   def create
@@ -32,7 +33,9 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     $current_ticket = @ticket
+    if !@ticket.logs.nil?
     @logs = @ticket.logs.paginate(:page => params[:page])
+    end
     @log = Log.new
     @states =  [["Open"], ["Being handled"],["Closed"]]
     @urgencies = [["Low"], ["Medium"], ["High"]]
